@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Util" />
+		<Option platforms="Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Linux">
+				<Option platforms="Unix;" />
+				<Option output="../../Lib/Linux/libUtilMTd" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-O0" />
+					<Add option="-UWIN32" />
+					<Add option="-U_WIN32" />
+					<Add option="-UWINDOWS" />
+					<Add option="-DWITH_OPENSSL" />
+					<Add directory="../.." />
+					<Add directory="../../../../../../usr/include/boost" />
+					<Add directory="../../Include" />
+				</Compiler>
+			</Target>
+			<Target title="Release Linux">
+				<Option platforms="Unix;" />
+				<Option output="../../Lib/Linux/libUtilMT" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-UWIN32" />
+					<Add option="-U_WIN32" />
+					<Add option="-UWINDOWS" />
+					<Add option="-DWITH_OPENSSL" />
+					<Add directory="../.." />
+					<Add directory="../../Include" />
+					<Add directory="../../../../../../usr/include/boost" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DWITH_OPENSSL -UWIN32 -U_WIN32 -UWINDOWS" />
+		</Compiler>
+		<Unit filename="../BlowFish.cpp" />
+		<Unit filename="../Blowfish.h" />
+		<Unit filename="../BuildVersionUtils.cpp" />
+		<Unit filename="../ClientLog.cpp" />
+		<Unit filename="../ClientLog.h" />
+		<Unit filename="../ClientLogUtils.cpp" />
+		<Unit filename="../ClientLogUtils.h" />
+		<Unit filename="../CriticalSection.h" />
+		<Unit filename="../CustomMutex.h" />
+		<Unit filename="../ErrorType.cpp" />
+		<Unit filename="../ErrorType.h" />
+		<Unit filename="../EventClass.cpp" />
+		<Unit filename="../EventClass.h" />
+		<Unit filename="../FileLogger.cpp" />
+		<Unit filename="../FileLogger.h" />
+		<Unit filename="../ILogObserver.h" />
+		<Unit filename="../MemLogger.cpp" />
+		<Unit filename="../MemLogger.h" />
+		<Unit filename="../MessageTimer.cpp" />
+		<Unit filename="../MessageTimer.h" />
+		<Unit filename="../MutexClass.cpp" />
+		<Unit filename="../MutexClass.h" />
+		<Unit filename="../ProfileManager.cpp" />
+		<Unit filename="../ProfileManager.h" />
+		<Unit filename="ReadMe.txt" />
+		<Unit filename="../Stdafx.h" />
+		<Unit filename="../StringUtil.cpp" />
+		<Unit filename="../StringUtil.h" />
+		<Unit filename="../Thread.cpp" />
+		<Unit filename="../Thread.h" />
+		<Unit filename="../UserProfileData.cpp" />
+		<Unit filename="../UserProfileData.h" />
+		<Unit filename="../Util.cpp" />
+		<Unit filename="../Util.h" />
+		<Unit filename="../XString.cpp" />
+		<Unit filename="../XString.h" />
+		<Unit filename="../configure.cpp" />
+		<Unit filename="../configure.h" />
+		<Unit filename="../dictionary.h" />
+		<Extensions>
+			<envvars />
+			<code_completion>
+				<search_path add="../../Include" />
+				<search_path add="../../../../../../usr/include/boost" />
+			</code_completion>
+			<lib_finder disable_auto="1" />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

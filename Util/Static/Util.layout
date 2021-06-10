@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug Linux" />
+	<File name="../StringUtil.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="144" />
+	</File>
+	<File name="../Util.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="13986" topLine="491" />
+	</File>
+</CodeBlocks_layout_file>
