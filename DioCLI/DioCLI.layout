@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug Linux" />
+	<File name="CommandDefs.h" open="0" top="0" tabpos="3">
+		<Cursor position="19054" topLine="474" />
+	</File>
+	<File name="ConsoleControl.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="685812" topLine="17755" />
+	</File>
+	<File name="ConsoleControl.h" open="0" top="0" tabpos="0">
+		<Cursor position="16216" topLine="394" />
+	</File>
+	<File name="DioCLI.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2988" topLine="126" />
+	</File>
+	<File name="DiomedeTask.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="57812" topLine="1813" />
+	</File>
+	<File name="DiomedeTask.h" open="0" top="0" tabpos="3">
+		<Cursor position="1642" topLine="89" />
+	</File>
+	<File name="Enum.h" open="0" top="0" tabpos="2">
+		<Cursor position="13405" topLine="452" />
+	</File>
+	<File name="ResumeManager.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="4819" topLine="162" />
+	</File>
+</CodeBlocks_layout_file>

@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DioCLI", "DioCLI.vcproj", "{F8C5C8A6-0FC5-4182-B7D1-F372DD4885BD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7288DAB9-5560-4193-988A-59C114B37DF2} = {7288DAB9-5560-4193-988A-59C114B37DF2}
+		{F2BF42D7-91EE-4955-A1C7-9B8179BC6908} = {F2BF42D7-91EE-4955-A1C7-9B8179BC6908}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Util", "..\Util\Static\Util.vcproj", "{4B04E50C-B013-41A3-A871-B89ADBD9FD0E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "gSoap", "..\gSoap\Static\gSoap.vcproj", "{7288DAB9-5560-4193-988A-59C114B37DF2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{4B04E50C-B013-41A3-A871-B89ADBD9FD0E} = {4B04E50C-B013-41A3-A871-B89ADBD9FD0E}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CPPSDK.Lib", "..\CPPSDK.Lib\Static\CPPSDK.Lib.vcproj", "{F2BF42D7-91EE-4955-A1C7-9B8179BC6908}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7288DAB9-5560-4193-988A-59C114B37DF2} = {7288DAB9-5560-4193-988A-59C114B37DF2}
+		{4B04E50C-B013-41A3-A871-B89ADBD9FD0E} = {4B04E50C-B013-41A3-A871-B89ADBD9FD0E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8C5C8A6-0FC5-4182-B7D1-F372DD4885BD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F8C5C8A6-0FC5-4182-B7D1-F372DD4885BD}.Debug|Win32.Build.0 = Debug|Win32
+		{F8C5C8A6-0FC5-4182-B7D1-F372DD4885BD}.Release|Win32.ActiveCfg = Release|Win32
+		{F8C5C8A6-0FC5-4182-B7D1-F372DD4885BD}.Release|Win32.Build.0 = Release|Win32
+		{4B04E50C-B013-41A3-A871-B89ADBD9FD0E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{4B04E50C-B013-41A3-A871-B89ADBD9FD0E}.Debug|Win32.Build.0 = Debug|Win32
+		{4B04E50C-B013-41A3-A871-B89ADBD9FD0E}.Release|Win32.ActiveCfg = Release|Win32
+		{4B04E50C-B013-41A3-A871-B89ADBD9FD0E}.Release|Win32.Build.0 = Release|Win32
+		{7288DAB9-5560-4193-988A-59C114B37DF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7288DAB9-5560-4193-988A-59C114B37DF2}.Debug|Win32.Build.0 = Debug|Win32
+		{7288DAB9-5560-4193-988A-59C114B37DF2}.Release|Win32.ActiveCfg = Release|Win32
+		{7288DAB9-5560-4193-988A-59C114B37DF2}.Release|Win32.Build.0 = Release|Win32
+		{F2BF42D7-91EE-4955-A1C7-9B8179BC6908}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F2BF42D7-91EE-4955-A1C7-9B8179BC6908}.Debug|Win32.Build.0 = Debug|Win32
+		{F2BF42D7-91EE-4955-A1C7-9B8179BC6908}.Release|Win32.ActiveCfg = Release|Win32
+		{F2BF42D7-91EE-4955-A1C7-9B8179BC6908}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

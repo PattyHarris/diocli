@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DioCLI" />
+		<Option platforms="Unix;" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Linux">
+				<Option platforms="Unix;" />
+				<Option output="DioCLI" prefix_auto="1" extension_auto="1" />
+				<Option external_deps="../Lib/Linux/libCPPSDKMTd.Lib.a;../Lib/Linux/libgSoapMTd.a;../Lib/Linux/libUtilMTd.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-g" />
+					<Add option="-O0" />
+					<Add option="-g3" />
+					<Add option="-UWIN32" />
+					<Add option="-U_WIN32" />
+					<Add option="-UWINDOWS" />
+					<Add option="-DWITH_OPENSSL" />
+					<Add option="-DCURL_STATICLIB" />
+					<Add directory="../Include" />
+					<Add directory="../Include/tclap" />
+					<Add directory="../Include/ErrorCodes" />
+					<Add directory="../Util" />
+					<Add directory="../gSoap" />
+					<Add directory="../CPPSDK.Lib" />
+					<Add directory="../../../../../usr/include/boost" />
+					<Add directory="../../../../../usr/include/openssl" />
+				</Compiler>
+				<Linker>
+					<Add option="DiomedePem.o" />
+					<Add library="CPPSDKMTd.Lib" />
+					<Add library="gSoapMTd" />
+					<Add library="UtilMTd" />
+					<Add library="rt" />
+					<Add library="curl" />
+					<Add library="pthread" />
+					<Add library="ssl" />
+					<Add library="crypto" />
+					<Add directory="../Lib/Linux" />
+					<Add directory="../Lib/Linux/openssl" />
+					<Add directory="../../../../../usr/lib" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="objcopy --input-target binary --output-target elf32-i386 --binary-architecture i386 Diomede.pem ./DiomedePem.o" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release Linux">
+				<Option platforms="Unix;" />
+				<Option output="DioCLI" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="-W" />
+					<Add option="-UWIN32" />
+					<Add option="-U_WIN32" />
+					<Add option="-UWINDOWS" />
+					<Add option="-DWITH_OPENSSL" />
+					<Add option="-DCURL_STATICLIB" />
+					<Add directory="../Include" />
+					<Add directory="../Include/tclap" />
+					<Add directory="../Include/ErrorCodes" />
+					<Add directory="../Util" />
+					<Add directory="../gSoap" />
+					<Add directory="../CPPSDK.Lib" />
+					<Add directory="../../../../../usr/include/boost" />
+					<Add directory="../../../../../usr/include/openssl" />
+				</Compiler>
+				<Linker>
+					<Add option="DiomedePem.o" />
+					<Add library="CPPSDKMT.Lib" />
+					<Add library="gSoapMT" />
+					<Add library="UtilMT" />
+					<Add library="rt" />
+					<Add library="curl" />
+					<Add library="pthread" />
+					<Add library="ssl" />
+					<Add library="crypto" />
+					<Add directory="../../../../../usr/lib" />
+					<Add directory="../Lib/Linux" />
+					<Add directory="../Lib/Linux/openssl" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="objcopy --input-target binary --output-target elf32-i386 --binary-architecture i386 Diomede.pem ./DiomedePem.o" />
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="../Include" />
+			<Add directory="../Include/tclap" />
+			<Add directory="../Include/ErrorCodes" />
+			<Add directory="../Include/curl" />
+			<Add directory="../Util" />
+			<Add directory="../gSoap" />
+			<Add directory="../CPPSDK.Lib" />
+			<Add directory="../../../../../usr/include/boost" />
+			<Add directory="../../../../../usr/include/openssl" />
+		</Compiler>
+		<Linker>
+			<Add directory="../../../../../usr/lib" />
+			<Add directory="../Lib/Linux" />
+			<Add directory="../Lib/Linux/openssl" />
+		</Linker>
+		<Unit filename="ApplicationDefs.h" />
+		<Unit filename="BillingDefs.h" />
+		<Unit filename="CommandDefs.h" />
+		<Unit filename="ConsoleControl.cpp" />
+		<Unit filename="ConsoleControl.h" />
+		<Unit filename="DioCLI.cpp" />
+		<Unit filename="DiomedeCmdLine.h" />
+		<Unit filename="DiomedeMultiArg.h" />
+		<Unit filename="DiomedeStdOut.h" />
+		<Unit filename="DiomedeSwitchArg.h" />
+		<Unit filename="DiomedeTask.cpp" />
+		<Unit filename="DiomedeTask.h" />
+		<Unit filename="DiomedeUnlabeledMultiArg.h" />
+		<Unit filename="DiomedeUnlabeledValueArg.h" />
+		<Unit filename="DiomedeValueArg.h" />
+		<Unit filename="Enum.h" />
+		<Unit filename="ReadMe.txt" />
+		<Unit filename="ResumeInfoData.cpp" />
+		<Unit filename="ResumeInfoData.h" />
+		<Unit filename="ResumeManager.cpp" />
+		<Unit filename="ResumeManager.h" />
+		<Unit filename="SimpleRedirect.cpp" />
+		<Unit filename="SimpleRedirect.h" />
+		<Unit filename="res/DioCLI.ico">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="res/gd-bundle.pem">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="resource.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="../Include/DiomedeStorage.h" />
+		<Extensions>
+			<envvars />
+			<code_completion />
+			<lib_finder disable_auto="1" />
+			<debugger />
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

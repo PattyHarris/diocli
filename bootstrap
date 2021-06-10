@@ -1,0 +1,181 @@
+#!/bin/bash
+
+# Check for proper versions of autotools
+# We require:
+#  - autoconf 2.50+
+#  - automake 1.6+
+#  - libtool 1.4+
+
+# Deal with some gentoo-specific issues
+export WANT_AUTOMAKE='1.7'
+export WANT_AUTOCONF_2_5=1
+
+## Using prereq in autoconf rather than here, mostly for the debian systems at
+## this point
+#if test -z "`autoconf --version 2>&1|head -n 1|egrep '2.5'`"; then
+#	echo "Autoconf 2.50 or above is required. Aborting build...";
+#    exit 1;
+#fi
+#
+#if test -z "`automake --version 2>&1|head -n 1|egrep '1.[6-9]'`"; then
+#	echo "Automake 1.6 or above is required. Aborting build...";
+#	exit 1;
+#fi
+#
+#if test -z "`libtool --version 2>&1|head -n 1|egrep '1.[4-5]'`"; then
+#	echo "Libtool 1.4 or above is required. Aborting build...";
+#	exit 1;
+#fi
+
+# clean up files which cause confusion when switch versions of auto*
+#rm -rf autom4te.cache
+
+# Fire up autotools - commented out since autoreconf -i handles all this...
+# libtoolize --force && aclocal $ACLOCAL_FLAGS && automake --include-deps --add-missing --foreign && autoconf 
+
+##====================================================================================
+# Get the build version for naming the build artifacts.
+#
+echo
+echo 'Getting the build version and number .........'
+
+buildVersionFile="./Include/BuildVersion.h"
+versionString="VERINFO_VERSIONNAME"
+startDeliminter="\""
+endDeliminter="\)"
+export versionNameValue="undefined"
+
+# echo "Looking for " $versionString
+
+# Check if file exists.
+if [ ! -f "$buildVersionFile" ]       
+then
+  echo "File \"$buildVersionFile\" does not exist."
+  exit
+fi
+
+# Note: we need to consider pipes when trying to get a variable
+# in the correct scope.  If using cat to pipe into this while loop,
+# the variable cannot be accessed outside the loop.
+while read line; do
+
+    # This also finds the substring within the string but hardcodes
+    # the start and end postions.
+    #subString=`expr substr "${line}" 9 19`
+    #if [ "$subString" = "$versionString" ] 
+
+    if [[ "$line" =~ "$versionString" ]];
+    then
+        # echo "Found it!: "
+
+        # get the lengths of the line and substrings
+        var=$line
+        len=${#var} 
+        lenVersion=${#versionString}
+                
+        posStart=`expr index "$line" "$startDeliminter"`
+        posEnd=`expr index "$line" "$endDeliminter"`
+
+        # echo "Start pos: " $posStart
+        # echo "End pos: " $posEnd
+
+        tmpValue=$(echo "$var"|cut -c"$((posStart+1))"-"$((posEnd-2))")
+        versionNameValue="$tmpValue"
+        # echo "$tmpValue"
+    fi
+done < "$buildVersionFile"
+
+echo "Version = \"$versionNameValue\"..."
+
+#====================================================================================
+# Create the configure.ac files using the version number
+#
+cp ./configure.ac.dat ./configure.ac
+sed -i "s/{VERINFO_VERSIONNAME}/${versionNameValue}/g" configure.ac
+
+cd ./CPPSDK.DLL/CPPSDK.DLL.Test/CPPSDK.DLL.Test
+cp ./configure.ac.dat ./configure.ac
+sed -i "s/{VERINFO_VERSIONNAME}/${versionNameValue}/g" configure.ac
+
+cd ../../..
+
+#====================================================================================
+# Setup the autotools...
+#
+echo
+echo 'Setup the autotools and make files .........'
+autoreconf -i
+automake
+
+# Configure and build...
+echo
+echo 'Configure and build .........'
+./configure
+make clean
+make all
+
+# Check for DioCLI
+echo
+echo 'Checking for diocli .........'
+if [ -e ./DioCLI/diocli ]
+then
+    echo 'diocli exists.'
+else
+    echo 'diocli does not exists.  Build errors are likely.  Quitting.'
+    exit
+fi
+
+
+# Make the distribution source and mv the file to the LinuxPack/Releases folder.
+echo
+echo 'Making the distribution source file .........'
+make dist
+
+distFile="diocli-source-${versionNameValue}.tar.gz"
+releasePath=./LinuxPack/Releases
+
+if [ -e ${distFile} ]
+then 
+    cp ${distFile} ${releasePath}
+else
+	echo ${distFile} 'does not exist!.  File cannot be not copied.'
+fi
+
+# Make the deb and binary tar distribution files.
+echo 'Making deb and tar packages .........'
+echo
+
+cd LinuxPack/
+./makePackage.py deb
+./makePackage.py tar
+
+# Updating the README with the latest version number
+cp ./makeReadMe.dat ./README
+cp ./README ./Releases/README
+sed -i "s/{VERINFO_VERSIONNAME}/${versionNameValue}/g" README
+
+echo 'Copying deb and tar packages to the Releases folder .........'
+echo
+
+distFileDeb="diocli_${versionNameValue}_i386.deb"
+distFileTar="diocli_${versionNameValue}.tar.gz"
+releasePath=Releases
+
+if [ -e ${distFileDeb} ]
+then 
+    cp ${distFileDeb} ${releasePath}
+else
+	echo ${distFileDeb} 'does not exist!.  File cannot be not copied.'
+fi
+
+if [ -e ${distFileTar} ]
+then 
+    cp ${distFileTar} ${releasePath}
+else
+	echo ${distFileTar} 'does not exist!.  File cannot be not copied.'
+fi
+
+echo
+echo 'Bootstap finished .........'
+
+

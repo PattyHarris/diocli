@@ -1,0 +1,2 @@
+# diocli
+ Diomede CLI
